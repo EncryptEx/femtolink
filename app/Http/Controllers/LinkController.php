@@ -23,10 +23,28 @@ class LinkController extends Controller
 
         $link->ownerId = $request->user()->id;
         $link->long_url = $request->long_url;
+        $link->short_url = $this->generateShortLink();
 
         $link->save();
 
         return response()->json(['success' => true, 'message' => 'Link created successfully', 'timestamp' => time()], 200);
 
+    }
+
+    public function generateShortLink($length = 16)
+    {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        $str = substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+
+        if($this->doesExistShortLink($str)){
+            return $this->generateShortLink();
+        } else {
+            return $str;
+        }
+    }
+    public function doesExistShortLink(string $short_url){
+        $link = Link::where('short_url', '=', $short_url);
+        return $link->count() > 0;
     }
 }
