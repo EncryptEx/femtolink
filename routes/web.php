@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
+
     Route::get('/tokens', [TokenController::class, 'get'])->name('tokens');
 
     Route::post('/tokens/create', [TokenController::class, 'create'])->name('createToken');
