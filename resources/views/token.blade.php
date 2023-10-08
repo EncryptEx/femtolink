@@ -8,8 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                
-                
+
+
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p class="text-2xl">
                         @if (count($tokens) != 0)
@@ -19,7 +19,7 @@
                     @endif
 
                     </p>
-                    
+
                     @foreach ($tokens as $token)
                     <div class="p-4 mt-7 sm:p-5 my-2 bg-white dark:bg-gray-700 shadow sm:rounded-lg">
                         <div class="max-w-xl">
@@ -35,9 +35,9 @@
                             </div>
                         </div>
                     @endif
-                    
+
                 </div>
-                
+
             </div>
             <br>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
