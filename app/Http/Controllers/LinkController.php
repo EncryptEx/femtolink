@@ -18,7 +18,7 @@ class LinkController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'long_url' => 'required|max:255',
+            'long_url' => 'required',
         ]);
 
         if ($validator->fails()) {
