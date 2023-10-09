@@ -20,6 +20,8 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        $table->dropColumn('short_url');
+        Schema::table('links', function ($table) {
+            $table->dropColumn('short_url');
+        }   
     }
 };
