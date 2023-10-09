@@ -8,7 +8,8 @@ use App\Models\Link;
 
 class LinkController extends Controller
 {
-    public function get(string $short_url){
+    public function get(string $short_url)
+    {
         $link = Link::where('short_url', $short_url);
         return redirect($link->get()[0]['long_url']);
     }
