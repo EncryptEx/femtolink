@@ -42,13 +42,14 @@ class LinkController extends Controller
 
         $str = substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
 
-        if($this->doesExistShortLink($str)){
+        if($this->doesExistShortLink($str)) {
             return $this->generateShortLink();
         } else {
             return $str;
         }
     }
-    public function doesExistShortLink(string $short_url){
+    public function doesExistShortLink(string $short_url)
+    {
         $link = Link::where('short_url', '=', $short_url);
         return $link->count() > 0;
     }
