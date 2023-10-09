@@ -22,6 +22,6 @@ return new class () extends Migration {
     {
         Schema::table('links', function ($table) {
             $table->dropColumn('short_url');
-        }   
+        }
     }
 };
