@@ -8,6 +8,11 @@ use App\Models\Link;
 
 class LinkController extends Controller
 {
+    public function get(string $short_url){
+        $link = Link::where('short_url', $short_url);
+        return redirect($link->get()[0]['long_url']);
+    }
+
     public function store(Request $request)
     {
 
@@ -27,7 +32,7 @@ class LinkController extends Controller
 
         $link->save();
 
-        return response()->json(['success' => true, 'message' => 'Link created successfully', 'timestamp' => time()], 200);
+        return response()->json(['success' => true, 'message' => 'Link created successfully', 'link' => route('redirect', $link->short_url),'timestamp' => time()], 200);
 
     }
 

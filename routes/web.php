@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TokenController;
@@ -25,11 +26,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('/tokens', [TokenController::class, 'get'])->name('tokens');
-
+    
     Route::post('/tokens/create', [TokenController::class, 'create'])->name('createToken');
 
     Route::delete('/tokens', [TokenController::class, 'deleteAll'])->name('delAllTokens');
-
+    
     Route::delete('/tokens/{id}', [TokenController::class, 'deleteOne'])->name('delToken');
 });
 
@@ -43,3 +44,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+
+
+Route::get('/{url}', [LinkController::class, 'get'])->name('redirect');
