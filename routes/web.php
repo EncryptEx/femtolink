@@ -26,11 +26,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('/tokens', [TokenController::class, 'get'])->name('tokens');
-    
+
     Route::post('/tokens/create', [TokenController::class, 'create'])->name('createToken');
 
     Route::delete('/tokens', [TokenController::class, 'deleteAll'])->name('delAllTokens');
-    
+
     Route::delete('/tokens/{id}', [TokenController::class, 'deleteOne'])->name('delToken');
 });
 
