@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\LinkController;
 
-
-
 class DashboardController extends Controller
 {
     public function get(Request $request)
