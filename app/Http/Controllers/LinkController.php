@@ -58,8 +58,8 @@ class LinkController extends Controller
     {
         $data = Link::select('long_url', 'short_url', 'created_at')->where('ownerId', $userId)
                ->orderBy('created_at', 'asc')
-               ->get();            
-        
+               ->get();
+
         return $data;
     }
 }
