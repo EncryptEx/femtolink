@@ -54,4 +54,12 @@ class LinkController extends Controller
         $link = Link::where('short_url', '=', $short_url);
         return $link->count() > 0;
     }
+    public function getLinksfFromUser(int $userId)
+    {
+        $data = Link::select('long_url', 'short_url', 'created_at')->where('ownerId', $userId)
+               ->orderBy('created_at', 'asc')
+               ->get();            
+        
+        return $data;
+    }
 }
