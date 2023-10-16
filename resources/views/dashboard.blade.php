@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <h4 class="text-3xl font-medium text-white title-font mb-5">Your femtolinks:</h4>
+            <h4 class="text-3xl font-medium text-black title-font mb-5">Your femtolinks:</h4>
             @foreach ($links as $link)
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-3">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
