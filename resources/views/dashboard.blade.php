@@ -15,7 +15,7 @@
                     <h4 class="text-2xl font-medium text-white title-font mb-2">{{ route('redirect' ,$link['short_url']) }} </h4>
                     <p class="leading-relaxed">@if (strlen($link['long_url']) > 50):
 
-    {{ substr($yourString, 0, 50) }}
+    {{ substr($link['long_url'], 0, 100) }}
 @else
     {{ $link['long_url'] }}
 @endif</p>
