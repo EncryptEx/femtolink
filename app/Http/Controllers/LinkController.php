@@ -11,7 +11,10 @@ class LinkController extends Controller
     public function get(string $short_url)
     {
         $link = Link::where('short_url', $short_url);
-        return redirect($link->get()[0]['long_url']);
+        if($link->count() > 0) {
+            return redirect($link->get()[0]['long_url']);
+        }
+        return abort(404);
     }
 
     public function store(Request $request)
