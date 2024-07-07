@@ -17,6 +17,25 @@ class LinkController extends Controller
         return abort(404);
     }
 
+
+    /**
+ * @OA\Post(
+ *     path="/api/link",
+ *     summary="Create a new shorted link",
+ *     tags={"Links"},
+ *     @OA\Parameter(
+ *         name="long_url",
+ *         in="query",
+ *         description="The long URL to be shortened",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(response="200", description="Link created successfully"),
+ *     @OA\Response(response="401", description="Unauthorized"),
+ *     @OA\Response(response="400", description="Bad Request"),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
     public function store(Request $request)
     {
 

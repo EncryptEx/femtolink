@@ -1,0 +1,60 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Femtolink API Documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/link": {
+            "post": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Create a new shorted link",
+                "operationId": "284bafba72de90d9d60cdaf30aa979bf",
+                "parameters": [
+                    {
+                        "name": "long_url",
+                        "in": "query",
+                        "description": "The long URL to be shortened",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Link created successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Links",
+            "description": "Operations about links"
+        }
+    ]
+}
