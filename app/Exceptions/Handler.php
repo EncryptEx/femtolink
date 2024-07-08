@@ -32,7 +32,7 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson() || strpos($request->getRequestUri(), '/api/') !== false) {
-            return response()->json(['success' => false, 'message' => 'Unauthenticated.', 'timestamp' => time()], 401);
+            return response()->json(['success' => false, 'message' => 'Unauthenticated.', 'timestamp' => time() ], 401);
         }
 
         return redirect()->guest(route('login'));

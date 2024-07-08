@@ -79,7 +79,7 @@ class LinkController extends Controller
     public function getLinksfFromUser(int $userId)
     {
         $data = Link::select('id', 'long_url', 'short_url', 'created_at')->where('ownerId', $userId)
-               ->orderBy('created_at', 'asc')
+               ->orderBy('created_at', 'desc')
                ->get();
 
         return $data;
