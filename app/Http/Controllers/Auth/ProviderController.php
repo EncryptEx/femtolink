@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,18 +20,20 @@ class ProviderController extends Controller
         try {
 
             $socialuser = Socialite::driver($provider)->user();
-            if (User::where('email', $socialuser->email)->first()->provider != $provider) {
+            $potentialUser = User::where('email', $socialuser->email)->first();
+            // check if user is already registered
+            if ($potentialUser && $potentialUser->provider != $provider) {
                 return redirect('/login')->withErrors(['email' => 'Email uses another provider. Please login with ' . User::where('email', $socialuser->email)->first()->provider . ' instead.']);
             }
-            
+
             $name = $socialuser->name;
-            if($name == null){
+            if ($name == null) {
                 $name = $socialuser->nickname;
-            } 
-            if($name == null){
+            }
+            if ($name == null) {
                 $name = $socialuser->username;
             }
-            if($name == null){
+            if ($name == null) {
                 $name = explode('@', $socialuser->email)[0];
             }
             $user = User::updateOrCreate([
@@ -49,8 +52,9 @@ class ProviderController extends Controller
 
             return redirect('/dashboard');
         } catch (\Exception $e) {
-            // log error on console
-            return redirect('/login'); 
+            // log error on logs
+            Log::error($e->getMessage());
+            return redirect('/login');
         }
 
 
