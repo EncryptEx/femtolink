@@ -14,4 +14,14 @@ class DashboardController extends Controller
 
     }
 
+    public function newlink(Request $request){
+        return view('newLink');
+    }
+
+    public function webStore(Request $request){
+        $link = new LinkController();
+        $link->store($request);
+        return redirect()->route('dashboard')->with('success', 'Link created successfully!');
+    }
+
 }

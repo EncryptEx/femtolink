@@ -24,6 +24,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'get'])->name('dashboard');
+    
+    Route::get('/newlink', [DashboardController::class, 'newlink'])->name('newlink');
+    Route::post('/newlink', [DashboardController::class, 'webStore'])->name('web-links.store');
+
 
     Route::get('/tokens', [TokenController::class, 'get'])->name('tokens');
 

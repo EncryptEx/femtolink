@@ -15,4 +15,4 @@ use App\Http\Controllers\LinkController;
 |
 */
 
-Route::post('/link', [LinkController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/link', [LinkController::class, 'store'])->middleware('auth:sanctum')->name('link.store');
