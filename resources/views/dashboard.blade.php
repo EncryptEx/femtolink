@@ -40,9 +40,20 @@
                             <div class="p-6 text-gray-900 dark:text-gray-100">
                                 <h4 class="text-2xl font-medium text-white title-font mb-2">
                                     {{ route('redirect', $link['short_url']) }}
+                                    <input type="hidden" value="{{ route('redirect', $link['short_url']) }}" id="urlShort-{{ $link['id'] }}">
+                                    <div id="short-tooltip-{{ $link['id'] }}" class="hidden bg-green-300 text-white text-sm px-2 py-1 rounded shadow-lg absolute -mt-12">Copied!</div>
+                                    <button type="button" class="copy-button text-gray-800 dark:text-gray-200"
+                                        data-clipboard-target="#urlShort-{{ $link['id'] }}" tooltip-target="short-tooltip-{{ $link['id'] }}">
+                                        <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                            stroke="currentColor" stroke-width="2" fill="currentColor"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z" />
+                                        </svg>
+                                    </button>
                                 </h4>
                                 <input type="hidden" value="{{ $link['long_url'] }}" id="urlLong-{{ $link['id'] }}">
-                                <span class="leading-relaxed">
+                                <span class="leading-relaxed text-gray-400 dark:text-gray-500">
                                     @if (strlen($link['long_url']) > 50)
                                         {{ substr($link['long_url'], 0, 100) }}...
                                     @else
@@ -50,7 +61,7 @@
                                     @endif
                                 </span>
 
-                                <div class="text-indigo-400 mt-4 pd-2 border-solid rounded border-indigo-400 inline-block">
+                                <div class="text-gray-400 dark:text-gray-500 mt-4 pd-2 border-solid rounded border-indigo-400 inline-block">
                                     <div id="tooltip-{{ $link['id'] }}" class="hidden bg-green-300 text-white text-sm px-2 py-1 rounded shadow-lg absolute -mt-12">Copied!</div>
                                     <button type="button" class="copy-button"
                                         data-clipboard-target="#urlLong-{{ $link['id'] }}" tooltip-target="tooltip-{{ $link['id'] }}">
