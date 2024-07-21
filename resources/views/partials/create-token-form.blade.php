@@ -5,7 +5,7 @@
 
         <div class="items-center gap-4">
             <div>
-                <x-input-label for="token_name" :value="__('Token\'s Name')" />
+                <x-input-label for="token_name" :value="__('Token\'s Name (just for you)')" />
                 <x-text-input id="token_name" name="token_name" type="text" class="mt-1 block w-full" />
             </div>
             <br>

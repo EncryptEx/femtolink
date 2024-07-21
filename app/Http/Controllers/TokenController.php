@@ -14,7 +14,7 @@ class TokenController extends Controller
         $tokens = auth()->user()->tokens;
         $nwtkn = auth()->user()->createToken($validated['token_name']);
         $newTokenName = $validated['token_name'];
-        $newTokenCode = $nwtkn->plainTextToken;
+        $newTokenCode = trim($nwtkn->plainTextToken);
         return view('token', ['tokens' => $tokens, 'newTokenName' => $newTokenName, 'newTokenCode' => $newTokenCode]);
     }
 
