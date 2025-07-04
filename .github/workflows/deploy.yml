@@ -20,4 +20,5 @@ jobs:
         script: |
           cd webs/femtolink.jaumelopez.dev
           git pull
-          docker compose up -d --build
+          sail up -d --build
+          bash start.sh
