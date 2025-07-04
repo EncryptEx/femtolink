@@ -23,7 +23,7 @@ services:
             - sail
         depends_on:
             - mysql
-        restart: always
+        restart: unless-stopped
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -48,7 +48,7 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
-        restart: always
+        restart: unless-stopped
 networks:
     sail:
         driver: bridge
